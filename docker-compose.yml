@@ -9,12 +9,11 @@ services:
       
       # Correct CurseForge configuration
       TYPE: "CURSEFORGE"
-      MODPACK: "550864:4889426"  # ProjectID:FileID (client version)
-      VERSION: "1.19.2"  # Must match modpack's Minecraft version
       
       # Required for CurseForge API access
       CF_API_KEY: ${CF_API_KEY}
       CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/better-mc-forge-bmc3/files/4889399"
+      CF_SERVER_MOD: "550864:4889399" #4889426"
       
       # Memory configuration
       MEMORY: "6G"

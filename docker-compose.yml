@@ -8,8 +8,8 @@ services:
       EULA: "TRUE"
       
       # CurseForge server pack configuration
-      TYPE: "CURSEFORGE"
-      CF_SERVER_MOD: "550864:4889399"  # ProjectID:FileID from your URL
+      MODPACK_PLATFORM: MODRINTH
+      MODRINTH_MODPACK: https://modrinth.com/modpack/better-mc-fabric-bmc3/version/v25
       CF_API_KEY: ${CF_API_KEY}  # Required for server pack downloads
       
       # Force server pack installation

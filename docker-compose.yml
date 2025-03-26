@@ -8,13 +8,15 @@ services:
       EULA: "TRUE"
       
       # Server type configuration (CRITICAL FIX)
-      TYPE: "FORGE"  # Required for Better MC modpack
-      VERSION: "1.20.1"  # Match Better MC 3 requirements
-      FORGE_VERSION: "47.2.20"  # Specific version for 1.20.1
-
+      MODPACK_PLATFORM: AUTO_CURSEFORGE
+      CF_API_KEY: ${CF_API_KEY}
+      CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/better-mc-forge-bmc3/files/4889426
+      
       # Memory configuration
       MEMORY: "6G"  # Sets both Xmx and Xms
       JVM_OPTS: >-
+        -Xms4G
+        -Xmx6G
         -XX:+UseG1GC
         -XX:+UnlockExperimentalVMOptions
         -XX:G1NewSizePercent=20
@@ -25,14 +27,6 @@ services:
         -Dlog4j2.formatMsgNoLookups=true
         -Dfml.ignoreInvalidMinecraftCertificates=true
         -Dfml.ignorePatchDiscrepancies=true
-
-      # Modrinth configuration
-      MODRINTH_PROJECT_ID: "better-mc-forge-bmc3"
-      MODRINTH_VERSION_ID: "v20"
-      MODRINTH_OVERRIDES_EXCLUSIONS: |
-        mods/citresewn-*.jar
-        **/datapacks/BE_default_endgen_fix*
-      MODRINTH_FORCE_SYNCHRONIZE: "true"
 
       # Server settings
       ONLINE_MODE: "FALSE"

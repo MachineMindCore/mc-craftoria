@@ -16,6 +16,8 @@ services:
       CF_API_KEY: ${CF_API_KEY}
       CF_SLUG: craftoria
       MEMORY: 6G
+      JVM_XX_OPTS: "-XX:+UseG1GC -XX:+ParallelRefProcEnabled"
+      JVM_OPTS: "-Xmx6G -Xms4G"  # Custom Xmx/Xms values
       # TODO: replace with slugs and see if already excluded by cf-exclude-include.json
       CF_EXCLUDE_MODS: |
         737481

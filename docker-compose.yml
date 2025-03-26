@@ -5,29 +5,21 @@ services:
     image: itzg/minecraft-server
     container_name: better-mc-server
     environment:
-      EULA: "TRUE"
+      EULA: "TRUE"                   # Must accept Minecraft EULA
+      TYPE: "FORGE"                  # Server type
+      VERSION: "1.19.2"              # Minecraft version
+      FORGE_VERSION: "43.3.2"        # Specific Forge version
+      MODPACK: "~/minecraft/modpacks/bmc3-server.zip"  # Path to your modpack
+      ONLINE_MODE: "FALSE"           # Disable Mojang auth
+      REMOVE_OLD_MODS: "true"        # Clean previous mods
+      OVERRIDE_SERVER_PROPERTIES: "true"  # Use modpack's settings
       
-      # CurseForge server pack configuration
-      MODPACK_PLATFORM: MODRINTH
-      MODRINTH_MODPACK: https://modrinth.com/modpack/better-mc-fabric-bmc3/version/v25
-      CF_API_KEY: ${CF_API_KEY}  # Required for server pack downloads
-      
-      # Force server pack installation
-      OVERRIDE_SERVER_PROPERTIES: "true"
-      FORCE_REDOWNLOAD: "true"
-      REMOVE_OLD_MODS: "true"
-      
-      # Version lock
-      VERSION: "1.19.2"
-      FORGE_VERSION: "43.3.2"
-
       # Memory configuration
       MEMORY: "6G"
       JVM_XX_OPTS: "-Xms4G -Xmx6G -XX:+UseG1GC -XX:+ParallelRefProcEnabled"
       JVM_OPTS: "-Dlog4j2.formatMsgNoLookups=true"
 
       # Server settings
-      ONLINE_MODE: "FALSE"
       ENABLE_ROLLING_LOGS: "true"
 
     ports:

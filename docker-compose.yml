@@ -14,6 +14,7 @@ services:
       
       # Required for CurseForge API access
       CF_API_KEY: ${CF_API_KEY}
+      CF_PAGE_URL: "https://www.curseforge.com/minecraft/modpacks/better-mc-forge-bmc3/files/4889399"
       
       # Memory configuration
       MEMORY: "6G"

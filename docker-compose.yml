@@ -7,26 +7,18 @@ services:
     environment:
       EULA: "TRUE"
       
-      # Correct server type configuration
-      TYPE: "CURSEFORGE"  # Use TYPE instead of MODPACK_PLATFORM
+      # Correct CurseForge configuration
+      TYPE: "CURSEFORGE"
+      MODPACK: "550864:4889426"  # ProjectID:FileID (client version)
+      VERSION: "1.19.2"  # Must match modpack's Minecraft version
+      
+      # Required for CurseForge API access
       CF_API_KEY: ${CF_API_KEY}
-      CF_SERVER_MOD: "550864:4889399"  # Use client modpack file ID here
       
       # Memory configuration
       MEMORY: "6G"
-      JVM_OPTS: >-
-        -Xms4G
-        -Xmx6G
-        -XX:+UseG1GC
-        -XX:+UnlockExperimentalVMOptions
-        -XX:G1NewSizePercent=20
-        -XX:G1ReservePercent=20
-        -XX:MaxGCPauseMillis=50
-        -XX:G1HeapRegionSize=32M
-        -XX:+ParallelRefProcEnabled
-        -Dlog4j2.formatMsgNoLookups=true
-        -Dfml.ignoreInvalidMinecraftCertificates=true
-        -Dfml.ignorePatchDiscrepancies=true
+      JVM_XX_OPTS: "-Xms4G -Xmx6G -XX:+UseG1GC -XX:+ParallelRefProcEnabled"
+      JVM_OPTS: "-Dlog4j2.formatMsgNoLookups=true"
 
       # Server settings
       ONLINE_MODE: "FALSE"
@@ -37,7 +29,7 @@ services:
       - "25565:25565/udp"
 
     volumes:
-      - ./mc_data:/data  # All mods/configs will be managed automatically
+      - ./mc_data:/data
 
     restart: unless-stopped
 

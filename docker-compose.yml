@@ -7,14 +7,19 @@ services:
     environment:
       EULA: "TRUE"
       
-      # Server type configuration
-      TYPE: "FORGE"  # Must use Forge for modded servers
-      VERSION: "1.19.2"  # Match modpack's Minecraft version
-      FORGE_VERSION: "43.3.2"  # From BMC3 server pack requirements
+      # CurseForge server pack configuration
+      TYPE: "CURSEFORGE"
+      CF_SERVER_MOD: "550864:4889399"  # ProjectID:FileID from your URL
+      CF_API_KEY: ${CF_API_KEY}  # Required for server pack downloads
       
-      # Direct server pack download
-      MODPACK: "https://edge.forgecdn.net/files/4889/399/Better+MC+FORGE+Server+Pack+v20.zip"
-      CF_API_KEY: ${CF_API_KEY}  # Still required for verification
+      # Force server pack installation
+      OVERRIDE_SERVER_PROPERTIES: "true"
+      FORCE_REDOWNLOAD: "true"
+      REMOVE_OLD_MODS: "true"
+      
+      # Version lock
+      VERSION: "1.19.2"
+      FORGE_VERSION: "43.3.2"
 
       # Memory configuration
       MEMORY: "6G"

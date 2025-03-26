@@ -9,7 +9,7 @@ services:
       TYPE: "FORGE"                  # Server type
       VERSION: "1.19.2"              # Minecraft version
       FORGE_VERSION: "43.3.2"        # Specific Forge version
-      MODPACK: "~/minecraft/modpacks/bmc3-server.zip"  # Path to your modpack
+      MODPACK: "/modpacks/bmc3-server.zip"  # Path to your modpack
       ONLINE_MODE: "FALSE"           # Disable Mojang auth
       REMOVE_OLD_MODS: "true"        # Clean previous mods
       OVERRIDE_SERVER_PROPERTIES: "true"  # Use modpack's settings
@@ -27,8 +27,9 @@ services:
       - "25565:25565/udp"
 
     volumes:
-      - ./mc_data:/data
-
+      - /root/minecraft/server-data:/data
+      - /root/minecraft/modpacks:/modpacks  # Absolute path for root
+      
     restart: unless-stopped
 
     deploy:

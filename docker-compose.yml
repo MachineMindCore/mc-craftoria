@@ -6,7 +6,6 @@ services:
     container_name: better-mc-server
     environment:
       EULA: "TRUE"
-      TYPE: FORGE
       
       # Memory configuration (adjust based on your available RAM)
       MEMORY: 6G  # Sets -Xmx (max memory)
@@ -28,7 +27,6 @@ services:
         -Dfml.ignorePatchDiscrepancies=true
 
       # Modrinth configuration
-      MODPACK_PLATFORM: MODRINTH
       MODRINTH_MODPACK: https://modrinth.com/modpack/better-mc-forge-bmc3/version/v20
       MODRINTH_PROJECT_ID: better-mc-forge-bmc3
       MODRINTH_VERSION_ID: v20

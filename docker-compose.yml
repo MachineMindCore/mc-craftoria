@@ -1,15 +1,14 @@
-version: '3.8'
-
 services:
   mc:
-    image: itzg/minecraft-server
-    container_name: better-mc-server
+    image: itzg/minecraft-server:${IMAGE_TAG:-java8}
     environment:
-      EULA: "TRUE"                   # Must accept Minecraft EULA
-      TYPE: "FORGE"                  # Server type
-      VERSION: "1.19.2"              # Minecraft version
-      FORGE_VERSION: "43.3.2"        # Specific Forge version
-      MODPACK: "/modpacks/bmc3-client.zip"  # Path to your modpack
+      EULA: "true"
+      TYPE: CURSEFORGE
+      CF_SERVER_MOD: /modpacks/bmc3-server.zip
+      #     CF_SERVER_MOD: /modpacks/createlive3serverfiles+1.4.2.zip
+      #     CF_SERVER_MOD: /modpacks/Valhelsia+3-3.5.1-SERVER.zip
+      #     CF_SERVER_MOD: https://media.forgecdn.net/files/3012/800/SkyFactory-4_Server_4.2.2.zip
+      #     CF_SERVER_MOD: /modpacks/${MODPACK:-SkyFactory_4_Server_4.1.0.zip}
       ONLINE_MODE: "FALSE"           # Disable Mojang auth
       REMOVE_OLD_MODS: "true"        # Clean previous mods
       OVERRIDE_SERVER_PROPERTIES: "true"  # Use modpack's settings

@@ -1,40 +1,21 @@
 services:
   mc:
     image: itzg/minecraft-server
-    tty: true
-    stdin_open: true
-    ports:
-      - "25565:25565"
     environment:
       EULA: true
-      ALLOW_FLIGHT: true
-      MOD_PLATFORM: AUTO_CURSEFORGE
+      MODPACK_PLATFORM: AUTO_CURSEFORGE
       # Allocate API key from https://console.curseforge.com/
       # and set in .env file making sure to double up dollar signs, such as
       # CF_API_KEY=$$2a$$10$$....
       # Refer to https://docker-minecraft-server.readthedocs.io/en/latest/types-and-platforms/mod-platforms/auto-curseforge/#api-key
       CF_API_KEY: ${CF_API_KEY}
-      CF_SLUG: craftoria
+      CF_SLUG: better-mc-forge-bmc3
+#      CF_FILENAME_MATCHER: v18.5
       MEMORY: 6G
-      JVM_XX_OPTS: "-XX:+UseG1GC -XX:+ParallelRefProcEnabled"
-      JVM_OPTS: "-Xmx6G -Xms4G"  # Custom Xmx/Xms values
-      # TODO: replace with slugs and see if already excluded by cf-exclude-include.json
-      CF_EXCLUDE_MODS: |
-        737481
-        363363
-        394468
-        986380
-        844662
-        568563
-        915902
-        690971
-        455508
-        1089803
-        511319
     volumes:
-      # Use managed volume by default, but can change to a relative path like
-      # ./data:/data
-      # to use a host directory
-      - mc-data:/data
+      - mc:/data
+    ports:
+      - "25565:25565"
+
 volumes:
-  mc-data:
+  mc: {}

@@ -7,13 +7,13 @@ services:
     environment:
       EULA: "TRUE"
       
-      # Server type configuration (CRITICAL FIX)
-      MODPACK_PLATFORM: AUTO_CURSEFORGE
+      # Correct server type configuration
+      TYPE: "CURSEFORGE"  # Use TYPE instead of MODPACK_PLATFORM
       CF_API_KEY: ${CF_API_KEY}
-      CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/better-mc-forge-bmc3/files/4889399
+      CF_SERVER_MOD: "550864:4889399"  # Use client modpack file ID here
       
       # Memory configuration
-      MEMORY: "6G"  # Sets both Xmx and Xms
+      MEMORY: "6G"
       JVM_OPTS: >-
         -Xms4G
         -Xmx6G
@@ -34,16 +34,14 @@ services:
 
     ports:
       - "25565:25565/tcp"
-      - "25565:25565/udp"  # Add UDP for better connectivity
+      - "25565:25565/udp"
 
     volumes:
-      - ./mc_data:/data
-      # Fix mods directory mapping:
-      - ./mods:/data/mods  # Correct path for Forge mods
+      - ./mc_data:/data  # All mods/configs will be managed automatically
 
     restart: unless-stopped
 
     deploy:
       resources:
         limits:
-          memory: 7G  # Increased buffer for system processes
+          memory: 7G

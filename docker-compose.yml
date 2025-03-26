@@ -15,7 +15,7 @@ services:
       # Refer to https://docker-minecraft-server.readthedocs.io/en/latest/types-and-platforms/mod-platforms/auto-curseforge/#api-key
       CF_API_KEY: ${CF_API_KEY}
       CF_SLUG: craftoria
-      MEMORY: 8G
+      MEMORY: 6G
       # TODO: replace with slugs and see if already excluded by cf-exclude-include.json
       CF_EXCLUDE_MODS: |
         737481

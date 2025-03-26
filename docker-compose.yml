@@ -12,6 +12,7 @@ services:
       ONLINE_MODE: "FALSE"           # Disable Mojang auth
       REMOVE_OLD_MODS: "true"        # Clean previous mods
       OVERRIDE_SERVER_PROPERTIES: "true"  # Use modpack's settings
+      FORGE_INSTALLER: "forge-1.19.2-43.3.2-installer.jar"  # Critical fix
       
       # Memory configuration
       MEMORY: "6G"
@@ -26,8 +27,9 @@ services:
       - "25565:25565/udp"
 
     volumes:
-      - /root/minecraft/server-data:/data
-      - /root/minecraft/modpacks:/modpacks  # Absolute path for root
+      - /root/minecraft/instances/bmc3/server-data:/data
+      - /root/minecraft/modpacks:/modpacks
+      - /root/minecraft/forge-installer:/forge  # Add Forge installer
 
     restart: unless-stopped
 
